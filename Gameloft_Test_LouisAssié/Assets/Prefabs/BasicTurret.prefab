@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1048076303}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: ProjectileSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 3237168149104652902}
   - component: {fileID: 8263675709273728043}
   - component: {fileID: 2249366759294181092}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: LowerBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 4182634226616655896}
   - component: {fileID: 115236999434692171}
   - component: {fileID: 2826012073349957469}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -233,7 +233,7 @@ GameObject:
   - component: {fileID: 7598252138032179423}
   - component: {fileID: 2885001044385907097}
   - component: {fileID: 1375157211}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: BasicTurret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -308,9 +308,9 @@ GameObject:
   - component: {fileID: 8998070243952368155}
   - component: {fileID: 411565482187885691}
   - component: {fileID: 2290494513229111999}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: UpperBody
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -403,7 +403,7 @@ GameObject:
   - component: {fileID: 4753607067646933949}
   - component: {fileID: 6471543042932969959}
   - component: {fileID: 2193382759550749151}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Cannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}

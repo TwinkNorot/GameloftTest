@@ -23,6 +23,8 @@ public class BasicTurret : MonoBehaviour
     bool targetLock = false;
     bool targetExist = false;
 
+
+
     /*public BasicTurret(string Name, string DamageType, float Range, float Damage, float ArmorPenetration, float AttackSpeed, float ProjectileSpeed)
     {
         name = Name;
@@ -41,9 +43,16 @@ public class BasicTurret : MonoBehaviour
 
     private void Update()
     {
+        
+
         if (targetExist)
         {
-            TargetTracking();
+            if (target.activeInHierarchy)
+                TargetTracking();
+            else
+                ChangeTarget();
+
+
         }
 
         if (canShoot && targetExist && targetLock)
@@ -88,9 +97,9 @@ public class BasicTurret : MonoBehaviour
         Vector3 rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed).eulerAngles;
         transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
 
-        float angle = Vector3.Angle(transform.position, target.transform.position);
+        float angle = Vector3.Angle(target.transform.position - transform.position, transform.forward);
 
-        if(angle < 2.0f)
+        if (angle < 5.0f)
             targetLock = true;
         else
             targetLock = false;

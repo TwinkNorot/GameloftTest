@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637727606759203687
-    m_Hash: 1729576532
+      ticks: 637728566352741407
+    m_Hash: 825706974
   m_LockFileStatus:
     m_FilePath: "E:/GitHub/GameloftTest/Gameloft_Test_LouisAssi\xE9/Packages/packages-lock.json"
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637727606760203920
-    m_Hash: 3263057943
+      ticks: 637728566352751412
+    m_Hash: 2486078997
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:

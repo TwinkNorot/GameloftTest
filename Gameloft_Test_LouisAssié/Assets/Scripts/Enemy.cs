@@ -22,4 +22,17 @@ public class Enemy : MonoBehaviour
         attack = Attack;
         armor = Armor;
     }
+
+    public void DamageTaken(Bullet projectileStats)
+    {
+        hp = Mathf.Clamp(hp - (projectileStats.damage - armor + projectileStats.armorPenetration), 0, maxHp);
+        if (hp == 0)
+            Death();
+    }
+
+    void Death()
+    {
+        gameObject.SetActive(false);
+    }
+
 }

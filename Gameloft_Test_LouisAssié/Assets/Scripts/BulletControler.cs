@@ -19,7 +19,17 @@ public class BulletControler : MonoBehaviour
         transform.position += transform.forward * stats.projectileSpeed * Time.deltaTime;
         if (Vector3.Distance(transform.position, stats.parentPosition) >= stats.range)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag.Equals("Enemy"))
+        {
+            other.GetComponentInParent<Enemy>().DamageTaken(stats);
+            gameObject.SetActive(false);
+        }
+    }
+
 }
