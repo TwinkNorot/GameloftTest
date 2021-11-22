@@ -11,6 +11,7 @@ public class Bullet : MonoBehaviour
     public float armorPenetration;
     public float projectileSpeed;
     public Vector3 parentPosition;
+    public string firstSuperiorAugment = "none";
 
     public void Init(string DamageType, float Range, float Damage, float ArmorPenetration, float ProjectileSpeed, Vector3 ParentPosition)
     {

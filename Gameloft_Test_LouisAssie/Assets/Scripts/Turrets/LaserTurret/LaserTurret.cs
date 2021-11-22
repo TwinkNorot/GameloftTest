@@ -5,7 +5,7 @@ using UnityEngine;
 public class LaserTurret : MonoBehaviour
 {
     string name;
-    public enum Type {Damage, Speed, Range}
+    public enum Type {Damage, Speed, Range, Healing, InstaDeath}
     public Type buffType;
     public float range;
     public float bonusStrengh;
@@ -26,6 +26,16 @@ public class LaserTurret : MonoBehaviour
                 case Type.Range:
                     bulletStats.range *= bonusStrengh;
                     break;
+                case Type.Healing:
+                    bulletStats.damage *= -bonusStrengh;
+                    if (bulletStats.firstSuperiorAugment.Equals("none"))
+                        bulletStats.firstSuperiorAugment = "Healing";
+                    break;
+                case Type.InstaDeath:
+                    bulletStats.damage *= 1000000;
+                    if (bulletStats.firstSuperiorAugment.Equals("none"))
+                        bulletStats.firstSuperiorAugment = "InstaDeath";
+                    break;
             }
         }
         else //else can only be Turret
@@ -44,6 +54,12 @@ public class LaserTurret : MonoBehaviour
                 case Type.Range:
                     turretStats.rangeRadius *= bonusStrengh;
                     BuffTarget.GetComponent<SphereCollider>().radius = turretStats.rangeRadius;
+                    break;
+                case Type.Healing:
+                    turretStats.damage *= -bonusStrengh;
+                    break;
+                case Type.InstaDeath:
+                    turretStats.damage *= 1000000;
                     break;
             }
         }
@@ -65,6 +81,12 @@ public class LaserTurret : MonoBehaviour
             case Type.Range:
                 turretStats.rangeRadius /= bonusStrengh;
                 BuffedTarget.GetComponent<SphereCollider>().radius = turretStats.rangeRadius;
+                break;
+            case Type.Healing:
+                turretStats.damage /= -bonusStrengh;
+                break;
+            case Type.InstaDeath:
+                turretStats.damage /= 1000000;
                 break;
         }
     }

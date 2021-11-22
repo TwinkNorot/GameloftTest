@@ -27,7 +27,7 @@ public class BulletControler : MonoBehaviour
     {
         if (other.tag.Equals("Enemy"))
         {
-            other.GetComponentInParent<Enemy>().DamageTaken(stats);
+            other.GetComponentInParent<Unit>().DamageTaken(gameObject);
             gameObject.SetActive(false);
         }
     }

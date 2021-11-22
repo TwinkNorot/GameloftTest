@@ -24,7 +24,7 @@ public class EnemyDespawner : MonoBehaviour
     {
         if (other.tag.Equals("Enemy"))
         {
-            gameManager.playerLifePoints -= other.GetComponentInParent<Enemy>().attack;
+            gameManager.playerLifePoints -= other.GetComponentInParent<Unit>().damageToPlayer;
             other.gameObject.SetActive(false);
         }
     }

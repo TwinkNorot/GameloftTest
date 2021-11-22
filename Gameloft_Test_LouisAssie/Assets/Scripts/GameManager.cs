@@ -5,6 +5,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
 
+
+    public List<GameObject> waypointsList = new List<GameObject>();
     public GameObject UIBackground;
     public int playerLifePoints;
     public bool canSelectTile = true;

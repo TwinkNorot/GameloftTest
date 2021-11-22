@@ -11,6 +11,7 @@ TagManager:
   - Waypoint
   - Button
   - UIBackground
+  - Ally
   layers:
   - Default
   - TransparentFX
