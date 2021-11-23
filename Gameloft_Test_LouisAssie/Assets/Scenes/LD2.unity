@@ -4013,7 +4013,7 @@ PrefabInstance:
     - target: {fileID: 2627170644983213024, guid: 253b6fc5909d4254aa7b2b72e77777a4, type: 3}
       propertyPath: waves.Array.data[1].enemy
       value: 
-      objectReference: {fileID: 6014857447920731239, guid: e1c416fcfe9f01d4fbcd1613793f1b6b, type: 3}
+      objectReference: {fileID: 6014857447920731239, guid: 62634ee9e80d0ae40ae8a03d212acb57, type: 3}
     - target: {fileID: 2627170644983213024, guid: 253b6fc5909d4254aa7b2b72e77777a4, type: 3}
       propertyPath: waves.Array.data[2].enemy
       value: 
@@ -4595,7 +4595,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1031296292}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: PauseButton
         m_Mode: 1

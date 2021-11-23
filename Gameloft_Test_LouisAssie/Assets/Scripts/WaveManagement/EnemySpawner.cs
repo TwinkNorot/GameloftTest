@@ -36,7 +36,7 @@ public class EnemySpawner : MonoBehaviour
 				remainingToSpawn = waves[waveIndex].number;
 				timeBeforeNext = waves[waveIndex].rate;
 			}
-			else if (gameManager.timeBeforNextWave > 0)
+			else if (gameManager.timeBeforNextWave > 0 && !gameManager.allWavesSpawned)
 			{
 				gameManager.timeBeforNextWave -= Time.deltaTime;
 			}
@@ -63,11 +63,16 @@ public class EnemySpawner : MonoBehaviour
 
 						if (waveIndex == waves.Length)
 						{
-							gameManager.allWavesSpawend = true;
+							gameManager.allWavesSpawned = true;
 							this.enabled = false;
 						}
 					}
 				}
+			}
+			if (gameManager.timeBeforNextWave != 0 && gameManager.allWavesSpawned)
+            {
+				gameManager.timeBeforNextWave = 0;
+
 			}
 		}
     }

@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     public float timeBeforNextWave;
     public int playerLifePoints;
     public int remainingEnemies;
-    public bool allWavesSpawend = false;
+    public bool allWavesSpawned = false;
     public bool canSelectTile = true;
     public bool canSelectTurret = true;
     public bool canPlay = true;
@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
             {
                 Lost();
             }
-            if (remainingEnemies == 0 && allWavesSpawend)
+            if (remainingEnemies == 0 && allWavesSpawned)
             {
                 Won();
             }
