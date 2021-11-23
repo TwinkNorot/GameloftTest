@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a7eede9f2b3da5b43beda5c6839d6819, type: 2}
+  - {fileID: 2100000, guid: 050de308bd84eea4daadc60ce937e3f4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -112,7 +112,7 @@ MonoBehaviour:
   selectedMaterial: {fileID: 2100000, guid: 98f1ca2306f8e5145b0e972c2358ec86, type: 2}
   gameManager: {fileID: 0}
   canvas: {fileID: 5958396674248326661}
-  turretPrefab: {fileID: 6642533707482136020, guid: 96faddec05484a74ab5fbd43115ebb2d, type: 3}
+  turretPrefab: {fileID: 6642533707482136020, guid: 33c086adbd9e14e449339b9acaec0675, type: 3}
   buildableTileTurretMask:
     serializedVersion: 2
     m_Bits: 128
@@ -184,10 +184,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 28
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 2
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -195,7 +195,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Basic Turret
+  m_Text: Build Basic Turret
 --- !u!1 &5958396674248326661
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,9 +271,9 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ReferenceResolution: {x: 1600, y: 720}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0.509
+  m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 50
   m_DefaultSpriteDPI: 50
@@ -364,8 +364,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -95, y: 36}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -124.1, y: 54}
+  m_SizeDelta: {x: 240, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5958396675040971402
 CanvasRenderer:

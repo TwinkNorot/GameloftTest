@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BulletControler : MonoBehaviour
 {
+    GameManager gameManager;
 
     Bullet stats;
 
@@ -11,15 +12,19 @@ public class BulletControler : MonoBehaviour
     void Start()
     {
         stats = GetComponent<Bullet>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position += transform.forward * stats.projectileSpeed * Time.deltaTime;
-        if (Vector3.Distance(transform.position, stats.parentPosition) >= stats.range)
+        if (gameManager.canPlay)
         {
-            gameObject.SetActive(false);
+            transform.position += transform.forward * stats.projectileSpeed * Time.deltaTime;
+            if (Vector3.Distance(transform.position, stats.parentPosition) >= stats.range)
+            {
+                gameObject.SetActive(false);
+            }
         }
     }
 

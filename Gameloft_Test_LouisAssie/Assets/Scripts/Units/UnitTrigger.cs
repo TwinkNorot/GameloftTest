@@ -6,14 +6,12 @@ public class UnitTrigger : MonoBehaviour
 {
 
     public GameObject parent;
-    public AllyControler allyControler;
-    public EnemyControler enemyControler;
+    public UnitController unitController;
 
     // Start is called before the first frame update
     void Awake()
     {
-        allyControler = parent.GetComponent<AllyControler>();
-        enemyControler = parent.GetComponent<EnemyControler>();
+        unitController = parent.GetComponent<UnitController>();
 
     }
 
@@ -22,31 +20,14 @@ public class UnitTrigger : MonoBehaviour
 
         if (other.tag.Equals(parent.tag))
         {
-            if (parent.tag.Equals("Ally"))
-            {
-                allyControler.canMove = false;
-                allyControler.blockingUnit = other.gameObject;
-            }
-            else
-            {
-                enemyControler.canMove = false;
-                enemyControler.blockingUnit = other.gameObject;
-            }
+            unitController.canMove = false;
+            unitController.blockingUnit = other.gameObject;
         }
         else if (other.tag.Equals("Ally") || other.tag.Equals("Enemy"))
         {
-            if (parent.tag.Equals("Ally"))
-            {
-                allyControler.Attack(other.GetComponentInParent<Unit>());
-                allyControler.blockingUnit = other.gameObject;
-                allyControler.canMove = false;
-            }
-            else
-            {
-                enemyControler.Attack(other.GetComponentInParent<Unit>());
-                enemyControler.blockingUnit = other.gameObject;
-                enemyControler.canMove = false;
-            }
+            unitController.Attack(other.GetComponentInParent<Unit>());
+            unitController.blockingUnit = other.gameObject;
+            unitController.canMove = false;
         }
     }
 
@@ -54,10 +35,7 @@ public class UnitTrigger : MonoBehaviour
     {
         if ((other.tag.Equals("Ally") || other.tag.Equals("Enemy")) && (!other.tag.Equals(parent.tag)))
         {
-            if (parent.tag.Equals("Ally"))
-                allyControler.Attack(other.GetComponentInParent<Unit>());
-            else
-                enemyControler.Attack(other.GetComponentInParent<Unit>());
+            unitController.Attack(other.GetComponentInParent<Unit>());
         }
     }
 }

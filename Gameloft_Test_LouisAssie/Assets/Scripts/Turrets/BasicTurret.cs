@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BasicTurret : MonoBehaviour
 {
+    GameManager gameManager;
 
     public GameObject target;
     public List<GameObject> targetsInRange = new List<GameObject>();
@@ -39,25 +40,28 @@ public class BasicTurret : MonoBehaviour
     private void Awake()
     {
         GetComponent<SphereCollider>().radius = rangeRadius;
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     private void Update()
     {
-        
 
-        if (targetExist)
+        if (gameManager.canPlay)
         {
-            if (target.activeInHierarchy)
-                TargetTracking();
-            else
-                ChangeTarget();
+            if (targetExist)
+            {
+                if (target.activeInHierarchy)
+                    TargetTracking();
+                else
+                    ChangeTarget();
 
 
-        }
+            }
 
-        if (canShoot && targetExist && targetLock)
-        {
-            Shoot();
+            if (canShoot && targetExist && targetLock)
+            {
+                Shoot();
+            }
         }
     }
 

@@ -67,7 +67,7 @@ public class LaserTurret : MonoBehaviour
 
     public void CancelBuff(GameObject BuffedTarget)
     {
-        BasicTurret turretStats = BuffedTarget.GetComponentInParent<BasicTurret>(); //GetComponentInParent because we have detect the body of the turret
+        BasicTurret turretStats = BuffedTarget.GetComponentInParent<BasicTurret>(); //GetComponentInParent because we have detected the body of the turret
         switch (buffType)
         {
             case Type.Damage:

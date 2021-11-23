@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
+using UnityEngine.UI;
 
-public class EnemyControler : MonoBehaviour
+public class UnitController : MonoBehaviour
 {
 
     GameManager gameManager;
     public GameObject blockingUnit;
+    public Image healthBar;
 
     public Unit stats;
 
@@ -15,8 +16,9 @@ public class EnemyControler : MonoBehaviour
 
     public bool canMove = true;
     bool canAttack = true;
+    bool hasChangedSide = false;
 
-    // Start is called before the first frame update
+    // Start is called before  the first frame update
     void Awake()
     {
         stats = GetComponent<Unit>();
@@ -25,19 +27,24 @@ public class EnemyControler : MonoBehaviour
 
     void Update()
     {
-        if (stats.isAllied)
+        if (gameManager.canPlay)
         {
-            enabled = false;
-            AllyControler allyControler = GetComponent<AllyControler>();
-            allyControler.enabled = true;
-            allyControler.nextWaypoint = nextWaypoint - 1;
+            if (stats.isAllied && !hasChangedSide)
+            {
+                nextWaypoint = nextWaypoint - 1;
+                gameObject.tag = "Ally";
+                GetComponentInChildren<UnitTrigger>().tag = "Ally";
+                hasChangedSide = true;
 
+            }
+
+            if (canMove)
+                Move();
+            else if (!blockingUnit.activeInHierarchy)
+                canMove = true;
+
+            healthBar.fillAmount = stats.hp / stats.maxHp;
         }
-
-        if(canMove)
-            Move();
-        else if (!blockingUnit.activeInHierarchy)
-            canMove = true;
     }
 
 
@@ -48,8 +55,16 @@ public class EnemyControler : MonoBehaviour
 
         if (Vector3.Distance(transform.position, gameManager.waypointsList[nextWaypoint].transform.position) <= 0.2f)
         {
-            if((nextWaypoint + 1) != gameManager.waypointsList.Count) //Just to avoid out of array error
-                nextWaypoint++;
+            if (!stats.isAllied)
+            {
+                if ((nextWaypoint + 1) != gameManager.waypointsList.Count) //Just to avoid out of array error
+                    nextWaypoint++;
+            }
+            else if (stats.isAllied)
+            {
+                if ((nextWaypoint) != 0) //Just to avoid out of array error
+                    nextWaypoint--;
+            }
         }
     }
 
@@ -68,22 +83,4 @@ public class EnemyControler : MonoBehaviour
         yield return new WaitForSeconds(stats.attackSpeed);
         canAttack = true;
     }
-
-
-
-
-
-
-    /*void ChangeDestination()
-    {
-        if(agent.remainingDistance < 0.1f)
-        {
-            waypoints.Remove(nextWaypoint);
-            if (waypoints.Count != 0)
-            {
-                FindNextWaypoint();
-                agent.SetDestination(nextWaypoint.transform.position);
-            }
-        }
-    }*/
 }

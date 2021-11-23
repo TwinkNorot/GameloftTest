@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class BuildableTileControler : MonoBehaviour
 {
+    public Material selectedMaterial;
+    Material unSelectedMaterial;
 
-    GameManager gameManager;
+
+    public GameManager gameManager;
 
     public GameObject canvas;
     public GameObject turretPrefab;
@@ -21,18 +24,22 @@ public class BuildableTileControler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        unSelectedMaterial = GetComponent<MeshRenderer>().material;
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.touchCount > 0)
+        if (gameManager.canPlay)
         {
-            touch = Input.GetTouch(0);
+            if (Input.touchCount > 0)
+            {
+                touch = Input.GetTouch(0);
 
-            if (selectable && gameManager.canSelectTile)
-                Selection();
+                if (selectable && gameManager.canSelectTile)
+                    Selection();
+            }
         }
     }
 
@@ -43,30 +50,32 @@ public class BuildableTileControler : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(touch.position);
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit, 100, buildableTileTurretMask))
+            if (Physics.Raycast(ray, out hit, 100, buildableTileTurretMask) && gameManager.canSelectTile)
             {
 
                 if (hit.transform.gameObject.Equals(gameObject) && !isSelected)
                 {
                     isSelected = true;
                     canvas.SetActive(true);
-                    gameManager.UIBackground.SetActive(true);
+                    gameManager.canSelectTurret = false;
+                    GetComponent<MeshRenderer>().material = selectedMaterial;
                 }
-                else
+                else if(isSelected) //Checking if the tapped tile is the selected one to avoid to activate turret selection when swapping tile
                 {
+                    gameManager.canSelectTurret = true;
                     isSelected = false;
                     canvas.SetActive(false);
-                    gameManager.UIBackground.SetActive(false);
+                    GetComponent<MeshRenderer>().material = unSelectedMaterial;
                 }
             }
-            else if(Physics.Raycast(ray, out hit, 100, 5))
+            else if(Physics.Raycast(ray, out hit, 100, 5)) //if we tap anywhere else on the screen
             {
-                Debug.Log(hit.transform.gameObject.tag);
-                if (!hit.transform.gameObject.tag.Equals("UIBackground"))
+                if (!hit.transform.gameObject.tag.Equals("UIBackground") && isSelected)
                 {
+                    gameManager.canSelectTurret = true;
                     isSelected = false;
                     canvas.SetActive(false);
-                    gameManager.UIBackground.SetActive(false);
+                    GetComponent<MeshRenderer>().material = unSelectedMaterial;
                 }
             }
         }
@@ -80,7 +89,8 @@ public class BuildableTileControler : MonoBehaviour
             selectable = false;
             isSelected = false;
             canvas.SetActive(false);
-            gameManager.UIBackground.SetActive(false);
+            gameManager.canSelectTurret = true;
+            GetComponent<MeshRenderer>().material = unSelectedMaterial;
         }
     }
 }

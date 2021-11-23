@@ -26,7 +26,7 @@ public class CameraResolution : MonoBehaviour
         float scaleheight = windowaspect / targetaspect;
         Camera camera = GetComponent<Camera>();
 
-        if (scaleheight < 1.0f)
+        /*if (scaleheight < 1.0f)
         {
             Rect rect = camera.rect;
 
@@ -49,7 +49,7 @@ public class CameraResolution : MonoBehaviour
             rect.y = 0;
 
             camera.rect = rect;
-        }
+        }*/
 
         ScreenSizeX = Screen.width;
         ScreenSizeY = Screen.height;
