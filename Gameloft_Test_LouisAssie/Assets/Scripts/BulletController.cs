@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletControler : MonoBehaviour
+public class BulletController : MonoBehaviour
 {
     GameManager gameManager;
 
@@ -30,7 +30,7 @@ public class BulletControler : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag.Equals("Enemy"))
+        if (other.tag.Equals("Enemy") || other.tag.Equals("Ally"))
         {
             other.GetComponentInParent<Unit>().DamageTaken(gameObject);
             gameObject.SetActive(false);

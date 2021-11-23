@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LaserTurretControler : MonoBehaviour
+public class LaserTurretController : MonoBehaviour
 {
     GameManager gameManager;
 
@@ -17,7 +17,7 @@ public class LaserTurretControler : MonoBehaviour
     public LayerMask laserTurretMask;
     public LayerMask defaultMask;
 
-    public bool isSelected = false;
+    bool isSelected = false;
 
     Touch touch;
 
@@ -34,15 +34,14 @@ public class LaserTurretControler : MonoBehaviour
 
         if (Input.touchCount > 0)
         {
-            touch = Input.GetTouch(0);
-            Selection();
+            touch = Input.GetTouch(0); 
+            Selection(); //Selection is allowed during pause so the players can take their time to read tooltips
             if (gameManager.canPlay)
             {
                 if (isSelected)
                     TurretRotation();
             }
         }
-        
     }
 
     void Selection()
@@ -79,7 +78,7 @@ public class LaserTurretControler : MonoBehaviour
         {
             Ray ray = Camera.main.ScreenPointToRay(touch.position);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 100, defaultMask, QueryTriggerInteraction.Ignore))
+            if (Physics.Raycast(ray, out hit, 100, defaultMask, QueryTriggerInteraction.Ignore)) //QueryTriggerInteraction.Ignore to avoid wrong values with Basic Turrets range triggers
             {
                 Vector3 touchPos = hit.point;
                 touchPos.y = 0;

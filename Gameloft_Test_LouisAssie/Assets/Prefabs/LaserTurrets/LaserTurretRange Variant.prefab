@@ -1,0 +1,101 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &8617908140692361360
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 650848168, guid: ee34d168a55353345acf5609df121e02, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 4637663720238091106}
+    - target: {fileID: 1440941373862193848, guid: ee34d168a55353345acf5609df121e02, type: 3}
+      propertyPath: m_Text
+      value: 'Blue Laser Turret :
+
+        This turret emits a laser that increases
+        range.
+
+        Bullets can receive this boost by going through the laser
+        and basic turrets detect more distant enemies and can fire with an increased
+        rang as long as the ray stay on them.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1612754969650077172, guid: ee34d168a55353345acf5609df121e02, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 02bd6a1a0dc5c4148b08fd371dacb187, type: 2}
+    - target: {fileID: 2120229200758921799, guid: ee34d168a55353345acf5609df121e02, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 02bd6a1a0dc5c4148b08fd371dacb187, type: 2}
+    - target: {fileID: 4577537200716079112, guid: ee34d168a55353345acf5609df121e02, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 02bd6a1a0dc5c4148b08fd371dacb187, type: 2}
+    - target: {fileID: 5110194707883567074, guid: ee34d168a55353345acf5609df121e02, type: 3}
+      propertyPath: m_Name
+      value: LaserTurretRange
+      objectReference: {fileID: 0}
+    - target: {fileID: 5226966748146659321, guid: ee34d168a55353345acf5609df121e02, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 02bd6a1a0dc5c4148b08fd371dacb187, type: 2}
+    - target: {fileID: 6409075638224809230, guid: ee34d168a55353345acf5609df121e02, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6409075638224809230, guid: ee34d168a55353345acf5609df121e02, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6409075638224809230, guid: ee34d168a55353345acf5609df121e02, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6409075638224809230, guid: ee34d168a55353345acf5609df121e02, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6409075638224809230, guid: ee34d168a55353345acf5609df121e02, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6409075638224809230, guid: ee34d168a55353345acf5609df121e02, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6409075638224809230, guid: ee34d168a55353345acf5609df121e02, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6409075638224809230, guid: ee34d168a55353345acf5609df121e02, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6409075638224809230, guid: ee34d168a55353345acf5609df121e02, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6409075638224809230, guid: ee34d168a55353345acf5609df121e02, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6409075638224809230, guid: ee34d168a55353345acf5609df121e02, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8552043302983362261, guid: ee34d168a55353345acf5609df121e02, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 02bd6a1a0dc5c4148b08fd371dacb187, type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ee34d168a55353345acf5609df121e02, type: 3}
+--- !u!1 &4637663720238091106 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4018547179318172658, guid: ee34d168a55353345acf5609df121e02, type: 3}
+  m_PrefabInstance: {fileID: 8617908140692361360}
+  m_PrefabAsset: {fileID: 0}

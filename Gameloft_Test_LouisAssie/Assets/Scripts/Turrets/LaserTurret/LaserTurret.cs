@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class LaserTurret : MonoBehaviour
 {
-    string name;
     public enum Type {Damage, Speed, Range, Healing, InstaDeath}
     public Type buffType;
-    public float range;
     public float bonusStrengh;
 
     public void ApplyBuff(GameObject BuffTarget)
@@ -28,38 +26,40 @@ public class LaserTurret : MonoBehaviour
                     break;
                 case Type.Healing:
                     bulletStats.damage *= -bonusStrengh;
-                    if (bulletStats.firstSuperiorAugment.Equals("none"))
-                        bulletStats.firstSuperiorAugment = "Healing";
+                    if (bulletStats.firstSuperiorBuff.Equals("None"))
+                        bulletStats.firstSuperiorBuff = "Healing";
                     break;
                 case Type.InstaDeath:
                     bulletStats.damage *= 1000000;
-                    if (bulletStats.firstSuperiorAugment.Equals("none"))
-                        bulletStats.firstSuperiorAugment = "InstaDeath";
+                    if (bulletStats.firstSuperiorBuff.Equals("None"))
+                        bulletStats.firstSuperiorBuff = "InstaDeath";
                     break;
             }
         }
         else //else can only be Turret
         {
-            BasicTurret turretStats = BuffTarget.GetComponentInParent<BasicTurret>(); //GetComponentInParent because we have detect the body of the turret
+            BasicTurretController turretStats = BuffTarget.GetComponentInParent<BasicTurretController>(); //GetComponentInParent because we have detected the body of the turret
             switch (buffType)
             {
                 case Type.Damage:
-                    turretStats.damage *= bonusStrengh;
+                    turretStats.stats.damage *= bonusStrengh;
                     break;
                 case Type.Speed:
-                    turretStats.attackSpeed /= bonusStrengh;
-                    turretStats.projectileSpeed *= bonusStrengh;
-                    turretStats.rotationSpeed *= bonusStrengh;
+                    turretStats.stats.attackSpeed /= bonusStrengh;
+                    turretStats.stats.projectileSpeed *= bonusStrengh;
+                    turretStats.stats.rotationSpeed *= bonusStrengh;
                     break;
                 case Type.Range:
-                    turretStats.rangeRadius *= bonusStrengh;
-                    BuffTarget.GetComponent<SphereCollider>().radius = turretStats.rangeRadius;
+                    turretStats.stats.rangeRadius *= bonusStrengh;
+                    turretStats.GetComponent<SphereCollider>().radius = turretStats.stats.rangeRadius;
                     break;
                 case Type.Healing:
-                    turretStats.damage *= -bonusStrengh;
+                    turretStats.stats.damage *= -bonusStrengh;
+                    turretStats.stats.superiorBuff = BasicTurret.SuperiorBuff.Healing;
                     break;
                 case Type.InstaDeath:
-                    turretStats.damage *= 1000000;
+                    turretStats.stats.damage *= 1000000;
+                    turretStats.stats.superiorBuff = BasicTurret.SuperiorBuff.InstaDeath;
                     break;
             }
         }
@@ -67,26 +67,28 @@ public class LaserTurret : MonoBehaviour
 
     public void CancelBuff(GameObject BuffedTarget)
     {
-        BasicTurret turretStats = BuffedTarget.GetComponentInParent<BasicTurret>(); //GetComponentInParent because we have detected the body of the turret
+        BasicTurretController turretStats = BuffedTarget.GetComponentInParent<BasicTurretController>(); //GetComponentInParent because we have detected the body of the turret
         switch (buffType)
         {
             case Type.Damage:
-                turretStats.damage /= bonusStrengh;
+                turretStats.stats.damage /= bonusStrengh;
                 break;
             case Type.Speed:
-                turretStats.attackSpeed *= bonusStrengh;
-                turretStats.projectileSpeed /= bonusStrengh;
-                turretStats.rotationSpeed /= bonusStrengh;
+                turretStats.stats.attackSpeed *= bonusStrengh;
+                turretStats.stats.projectileSpeed /= bonusStrengh;
+                turretStats.stats.rotationSpeed /= bonusStrengh;
                 break;
             case Type.Range:
-                turretStats.rangeRadius /= bonusStrengh;
-                BuffedTarget.GetComponent<SphereCollider>().radius = turretStats.rangeRadius;
+                turretStats.stats.rangeRadius /= bonusStrengh;
+                turretStats.GetComponent<SphereCollider>().radius = turretStats.stats.rangeRadius;
                 break;
             case Type.Healing:
-                turretStats.damage /= -bonusStrengh;
+                turretStats.stats.damage /= -bonusStrengh;
+                turretStats.stats.superiorBuff = BasicTurret.SuperiorBuff.None;
                 break;
             case Type.InstaDeath:
-                turretStats.damage /= 1000000;
+                turretStats.stats.damage /= 1000000;
+                turretStats.stats.superiorBuff = BasicTurret.SuperiorBuff.None;
                 break;
         }
     }

@@ -232,6 +232,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7598252138032179423}
   - component: {fileID: 2885001044385907097}
+  - component: {fileID: 7937374999857088510}
   - component: {fileID: 1375157211}
   m_Layer: 1
   m_Name: BasicTurret
@@ -272,6 +273,29 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 10
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7937374999857088510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6642533707482136020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a35b8cab2992a33468cf7840295443db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Basic
+  damageType: Normal
+  rangeRadius: 10
+  damage: 10
+  armorPenetration: 0
+  attackSpeed: 1
+  projectileSpeed: 15
+  rotationSpeed: 10
+  canShoot: 1
+  targetLock: 0
+  targetExist: 0
 --- !u!114 &1375157211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,6 +312,7 @@ MonoBehaviour:
   targetsInRange: []
   projectilePrefab: {fileID: 5522917948823153764, guid: bdfa96dd4dcadd24db5713e5c179ab41, type: 3}
   projectileSpawnPoint: {fileID: 1048076302}
+  stats: {fileID: 0}
   name: Basic
   damageType: Normal
   rangeRadius: 10

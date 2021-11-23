@@ -29,37 +29,14 @@ public class Unit : MonoBehaviour
         damageToPlayer = DamageToPlayer;
     }
 
-    /*public void DamageTaken(Bullet projectileStats)
-    {
-        if(projectileStats.damage < -1000000)
-        {
-            if (projectileStats.firstSuperiorAugment.Equals("InstaDeath"))
-            {
-                isAllied = true;
-                hp = projectileStats.damage / -1000000;
-            }
-            else
-            {
-                hp = 0;
-                Death();
-            }
-        }
-        else
-        {
-            hp = Mathf.Clamp(hp - (projectileStats.damage - armor + projectileStats.armorPenetration), 0, maxHp);
-            if (hp == 0)
-                Death();
-        }  
-    }*/
-
     public void DamageTaken(GameObject damageSource)
     {
         if (damageSource.tag.Equals("Bullet"))
         {
             Bullet bulletStats = damageSource.GetComponent<Bullet>();
-            if (bulletStats.damage < -1000000)
+            if (bulletStats.damage < -1000000 && !isAllied)
             {
-                if (bulletStats.firstSuperiorAugment.Equals("InstaDeath"))
+                if (bulletStats.firstSuperiorBuff.Equals("InstaDeath"))
                 {
                     isAllied = true;
                     hp = bulletStats.damage / -1000000;
@@ -67,6 +44,20 @@ public class Unit : MonoBehaviour
                 else
                 {
                     hp = 0;
+                }
+            }
+            else if (isAllied)
+            {
+                if (bulletStats.damage < 0)
+                {
+                    if (bulletStats.damage < -1000000)
+                    {
+                        hp = Mathf.Clamp(hp + bulletStats.damage / -1000000, 0, maxHp);
+                    }
+                    else
+                    {
+                        hp = Mathf.Clamp(hp + bulletStats.damage, 0, maxHp);
+                    }
                 }
             }
             else
@@ -89,6 +80,8 @@ public class Unit : MonoBehaviour
 
     void Death()
     {
+        if(!isAllied)
+            GameObject.Find("GameManager").GetComponent<GameManager>().remainingEnemies--;
         gameObject.SetActive(false);
     }
 

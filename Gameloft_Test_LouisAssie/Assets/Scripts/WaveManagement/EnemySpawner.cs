@@ -6,14 +6,14 @@ public class EnemySpawner : MonoBehaviour
 {
 
 	GameManager gameManager;
+
 	public Wave[] waves;
     public int timeBetweenWaves;
 
 	public bool nextWaveCanSpawn = false;
 	int waveIndex = 0;
-
-	float timeBeforeNext;
 	int remainingToSpawn;
+	float timeBeforeNext;
 
 
 
@@ -29,11 +29,10 @@ public class EnemySpawner : MonoBehaviour
     {
 		if (gameManager.canPlay)
 		{
-			if (nextWaveCanSpawn)
+			if (nextWaveCanSpawn && waveIndex != waves.Length)
 			{
 				nextWaveCanSpawn = false;
 				gameManager.timeBeforNextWave = timeBetweenWaves;
-				//StartCoroutine(SpawnWave());
 				remainingToSpawn = waves[waveIndex].number;
 				timeBeforeNext = waves[waveIndex].rate;
 			}
@@ -54,54 +53,31 @@ public class EnemySpawner : MonoBehaviour
 				}
 				else
 				{
-					SpawnEnemy(waves[waveIndex].enemy);
+					Instantiate(waves[waveIndex].enemy, transform.position, transform.rotation);
 					remainingToSpawn--;
+					gameManager.remainingEnemies++;
 					timeBeforeNext = waves[waveIndex].rate;
 					if (remainingToSpawn == 0)
                     {
 						waveIndex++;
 
 						if (waveIndex == waves.Length)
+						{
+							gameManager.allWavesSpawend = true;
 							this.enabled = false;
+						}
 					}
 				}
-
 			}
-
-
 		}
     }
 
-
-	void SpawnWave()
-    {
-		SpawnEnemy(waves[waveIndex].enemy);
-
-		waveIndex++;
-
-		if (waveIndex == waves.Length)
-			this.enabled = false;
-	}
-
-	void SpawnEnemy(GameObject enemy)
+	private void OnTriggerEnter(Collider other)
 	{
-		Instantiate(enemy, transform.position, transform.rotation);
-	}
-
-	/*IEnumerator SpawnWave()
-	{
-		Wave wave = waves[waveIndex];
-
-		for (int i = 0; i < wave.number; i++)
+		if (other.tag.Equals("Ally"))
 		{
-			SpawnEnemy(wave.enemy);
-			yield return new WaitForSeconds(wave.rate);
-			
+			gameManager.playerLifePoints -= other.GetComponentInParent<Unit>().damageToPlayer;
+			other.transform.parent.gameObject.SetActive(false);
 		}
-
-		waveIndex++;
-
-		if (waveIndex == waves.Length)
-			this.enabled = false;
-	}*/
+	}
 }

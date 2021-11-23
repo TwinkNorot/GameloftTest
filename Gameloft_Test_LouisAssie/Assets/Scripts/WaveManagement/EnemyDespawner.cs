@@ -13,19 +13,13 @@ public class EnemyDespawner : MonoBehaviour
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag.Equals("Enemy"))
         {
             gameManager.playerLifePoints -= other.GetComponentInParent<Unit>().damageToPlayer;
-            other.gameObject.SetActive(false);
+            other.transform.parent.gameObject.SetActive(false);
         }
     }
 

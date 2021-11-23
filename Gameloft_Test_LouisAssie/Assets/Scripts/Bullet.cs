@@ -5,21 +5,30 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
 
-    public string damageType;
     public float range;
     public float damage;
     public float armorPenetration;
     public float projectileSpeed;
     public Vector3 parentPosition;
-    public string firstSuperiorAugment = "none";
+    public string firstSuperiorBuff = "None";
 
-    public void Init(string DamageType, float Range, float Damage, float ArmorPenetration, float ProjectileSpeed, Vector3 ParentPosition)
+    public void Init(float Range, float Damage, float ArmorPenetration, float ProjectileSpeed, Vector3 ParentPosition, string FirstSuperiorBuff)
     {
-        damageType = DamageType;
         range = Range;
         damage = Damage;
         armorPenetration = ArmorPenetration;
         projectileSpeed = ProjectileSpeed;
         parentPosition = ParentPosition;
+        firstSuperiorBuff = FirstSuperiorBuff;
+
+        if (firstSuperiorBuff.Equals("Healing"))
+        {
+            damage *= -1;
+        }
+        else if(firstSuperiorBuff.Equals("InstaDeath"))
+        {
+            damage *= 1000000;
+        }
+
     }
 }

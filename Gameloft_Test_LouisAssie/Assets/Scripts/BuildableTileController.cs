@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BuildableTileControler : MonoBehaviour
+public class BuildableTileController : MonoBehaviour
 {
     public Material selectedMaterial;
     Material unSelectedMaterial;
